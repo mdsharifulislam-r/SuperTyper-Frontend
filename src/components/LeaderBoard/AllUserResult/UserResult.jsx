@@ -11,7 +11,7 @@ export default function UserResult({ data, index }) {
     }
   return (
       <div onClick={OnClick} data-aos="fade-up" className='w-full flex lg:justify-between px-3 py-2 place-items-center card-bg rounded-md' >
-          <div className='flex  place-items-center pr-2 lg:w-[20%]  w-[32%] gap-3'>
+          <div className='flex  place-items-center pr-2 lg:w-[20%] w-full  gap-3'>
               <div className="index lg:text-5xl md:text-3xl text-2xl text-white">
                   {index+1 ||0}
               </div>
