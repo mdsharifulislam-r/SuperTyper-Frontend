@@ -30,7 +30,7 @@ export default function GitHubLogin({isLogin}) {
                 type: "github"
             })
             console.log(result.user.reloadUserInfo[0].providerUserInfo);
-            if (data) {
+            if (data.success || !data.success) {
                 disppatch(setLoaderShow(false))
             }
         } else {
@@ -48,9 +48,8 @@ export default function GitHubLogin({isLogin}) {
             }
            
 
-            if (data) {
+            if (data.success || !data.success) {
                 disppatch(setLoaderShow(false))
-      
             }
         }
        
