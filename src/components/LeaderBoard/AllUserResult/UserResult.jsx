@@ -16,7 +16,7 @@ export default function UserResult({ data, index }) {
                   {index+1 ||0}
               </div>
               <div className='flex gap-1'>
-                  <div className="image relative min-w-[100px]">
+                  <div className="image relative min-w-[80px]">
                       <img src={data?.userImage?data?.userImage:image} alt="" className='w-[70px] h-[70px] object-cover rounded-full bg-gold-shade' />
                   </div>
                 
