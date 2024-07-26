@@ -3,7 +3,7 @@ import { BsGraphUpArrow } from "react-icons/bs";
 import { FaChevronRight } from "react-icons/fa";
 export default function Card({title,desc,icon}) {
   return (
-    <div className='card-bg p-7 rounded-md hover:scale-105 transition duration-100'>
+    <div data-aos="fade-up" className='card-bg p-7 rounded-md hover:scale-105 transition duration-100'>
           <div className="icon text-4xl text-white">
               {icon}
           </div>

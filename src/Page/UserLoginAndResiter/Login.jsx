@@ -35,11 +35,12 @@ export default function Login() {
   }
   const onSubmit =async e => {
     e.preventDefault()
+    console.log("called");
     dispatch(setLoaderShow(true))
     const {email, pass } = formData
     if ( email && pass) {
   
-   const User = await useLoginSupport({
+   const res = await useLoginSupport({
         email,
         password: pass,
         isSocial:false
@@ -52,10 +53,13 @@ export default function Login() {
           pass: "",
        
         })
-   console.log(User);
-      if (User) {
+
+      if (res) {
         dispatch(setLoaderShow(false))
-        dispatch(useLogin(User))
+      }
+      if (res.success) {
+       
+        dispatch(useLogin(res.user))
         navigate("/")
       }
       
@@ -101,7 +105,6 @@ export default function Login() {
             </div>
             <div className=" cursor-pointer hover:text-color-gold">
               <span className='absolute opacity-0'><Googlelogin isLogin={true} /></span>
-
               <FaGoogle />
             </div>
           </div>

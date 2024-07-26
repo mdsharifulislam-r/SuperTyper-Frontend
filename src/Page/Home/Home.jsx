@@ -12,6 +12,7 @@ import { useSearchParams } from 'react-router-dom'
 
 import { GetUserResult, GetUserSkill } from '../../Store/ProjectSlice'
 
+
 function Home() {
   const dispatch = useDispatch()
   const user = useSelector(state=>state.user)
@@ -20,8 +21,8 @@ function Home() {
     dispatch(GetUserResult())
    },[])
   return (
-    <div>
-      
+    <div className=' overflow-x-hidden'>
+    
           <HeroSection />
           <LeaderShowSection />
           <ShowCommunity />

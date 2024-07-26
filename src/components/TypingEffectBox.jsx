@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TypeAnimation } from 'react-type-animation';
-export default function TypingEffectBox({text}) {
+export default function TypingEffectBox({ text }) {
+    const [size, setSize] = useState(640)
+    window.addEventListener("resize", () => {
+        setSize(window.innerWidth)
+    })
   return (
       <TypeAnimation
           style={{ whiteSpace: 'pre-line', display: 'block' }}
@@ -10,7 +14,7 @@ export default function TypingEffectBox({text}) {
               '',
           ]}
           repeat={Infinity}
-          speed={10}
+          speed={size>640?10:2}
       />
   )
 }

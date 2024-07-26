@@ -12,12 +12,13 @@ import useImageUpload from '../../../../CustomHooks/useImageUpload'
 import useUpdateFollowers from '../../../../CustomHooks/useUpdateFollowers'
 import useFindUser from '../../../../CustomHooks/useFindUser'
 import { toast } from 'react-toastify'
+import MyButton from '../../../../MyButton/MyButton'
 export default function UserSocialInfo({tempUser}) {
   const dispatch = useDispatch()
   const own = useSelector(state => state.user)
   const user = tempUser
   const isUser = own._id === tempUser?._id
-
+  const [isLoading,setLoading]=useState(false)
   useEffect(() => {
     dispatch(GetUserSkill(user?._id))
   }, [tempUser])
@@ -28,7 +29,7 @@ export default function UserSocialInfo({tempUser}) {
   
   async function UploadImage(e)
   {
-    const instence = UseAxios()
+  
     const image = e.target.files[0]
 
     const res = await useImageUpload(image)
@@ -47,14 +48,14 @@ export default function UserSocialInfo({tempUser}) {
   async function Follower() {
 
     if (own?.name) {
-    
+    setLoading(true)
       const res = await useUpdateFollowers(tempUser?._id, {
         type: "followers",
         id: own?._id
       })
-      console.log(res);
+    
       if (res?.success) {
-  
+        setLoading(false)
         const follow = await useUpdateFollowers(own?._id, {
           type: "following",
           id: tempUser?._id
@@ -68,11 +69,16 @@ export default function UserSocialInfo({tempUser}) {
 
   async function Unfollow() {
   
-    const kala = await useUpdateFollowers(own?._id, {
+    setLoading(true)
+    const res = await useUpdateFollowers(own?._id, {
       type: "unfollow",
       id: tempUser?._id
     })
-  console.log(kala);
+   
+    if (res.success) {
+      setLoading(false)
+    }
+
   }
   return (
     <div className='flex bg-white rounded-lg justify-center place-items-center flex-col gap-3 p-6'>
@@ -95,7 +101,9 @@ export default function UserSocialInfo({tempUser}) {
                   <span>{tempUser.following?.length} Following</span>
               </div>
         {!isUser && <div className="button flex justify-center gap-3 w-full ">
-          {isFollow ? <button className='px-3 py-2 bg-gold-shade rounded-lg text-sm' onClick={Unfollow} >unfollow</button> : <button className='px-3 py-2 bg-gold-shade rounded-lg text-sm' onClick={Follower}>Follow</button>} 
+          <MyButton loading={isLoading}>
+            {isFollow ? <button className='px-3 py-2 bg-gold-shade rounded-lg text-sm' onClick={Unfollow} >unfollow</button> : <button className='px-3 py-2 bg-gold-shade rounded-lg text-sm' onClick={Follower}>Follow</button>} 
+          </MyButton> 
           <button className='px-3 py-2 bg-dark-shade rounded-lg text-sm'>Massage</button>
         </div>}
           </div>

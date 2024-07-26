@@ -2,16 +2,18 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import UserBox from './ProfileImage/UserBox'
 import Logo from './Logo/Logo'
+import { useDispatch } from 'react-redux'
+import { setLoaderShow } from '../../Store/ProjectSlice'
 
 export default function DaisyNabar({ showBack }) {
-    const [start,setStart]=useState(false)
+    const dispatch = useDispatch()
+    
     function Click() {
-        
-        showBack()
-        setStart(prev=>!prev)
+        dispatch(setLoaderShow(false))
+     
     }
     return (
-        <div className="navbar block lg:hidden md:hidden bg-base-100">
+        <div onClick={Click} className="navbar block lg:hidden md:hidden bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

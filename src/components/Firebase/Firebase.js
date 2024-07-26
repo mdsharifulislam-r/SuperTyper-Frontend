@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import {getAuth,GithubAuthProvider} from "firebase/auth"
+import {getAuth,GithubAuthProvider,GoogleAuthProvider} from "firebase/auth"
 const firebaseConfig = {
   apiKey: "AIzaSyDl8ecky8w1G8YsSau2_ka5Y9u_49f3z6c",
   authDomain: "super-typer-c31a8.firebaseapp.com",
@@ -16,5 +16,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
 const provider = new GithubAuthProvider()
-
-export {auth,provider}
+const googleProvider = new GoogleAuthProvider()
+googleProvider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+export {auth,provider,googleProvider}

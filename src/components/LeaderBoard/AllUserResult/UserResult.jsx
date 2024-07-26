@@ -10,7 +10,7 @@ export default function UserResult({ data, index }) {
         navigate(`/profile/${data?.userId}`)
     }
   return (
-    <div onClick={OnClick} className='w-full flex lg:justify-between px-3 py-2 place-items-center card-bg rounded-md' >
+      <div onClick={OnClick} data-aos="fade-up" className='w-full flex lg:justify-between px-3 py-2 place-items-center card-bg rounded-md' >
           <div className='flex  place-items-center pr-2 justify-between lg:w-[20%] w-[27%] gap-3'>
               <div className="index lg:text-5xl md:text-3xl text-2xl text-white">
                   {index+1 ||0}

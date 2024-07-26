@@ -41,7 +41,7 @@ export default function ChoseLevelandTime({ mistack, paralength, type }) {
                 <div className=" relative bg-white pointer-events-auto  w-[70%] p-3 rounded-lg z-[500] " >
                     <button className="c absolute top-5 right-9 cursor-pointer text-color  text-2xl" >X</button>
                     <div className="result w-full flex justify-center place-items-center  px-6 py-5">
-                        <div className="imgbox w-[30%] flex justify-center place-items-center">
+                        <div className="imgbox w-[30%]  justify-center place-items-center hidden lg:flex md:flex">
                             <img src={looserImage} alt="" className='' />
                         </div>
                         <div className="text-box">

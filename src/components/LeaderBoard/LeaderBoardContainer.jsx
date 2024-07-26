@@ -22,7 +22,7 @@ export default function LeaderBoardContainer() {
   }
   dispatch(setLoaderShow(true))
   const userResultData = useSelector(state => state.usersResult)
-  if (userResultData.length) {
+  if (userResultData.length !==undefined) {
     dispatch(setLoaderShow(false))
   }
   const data = GetMax(userResultData)

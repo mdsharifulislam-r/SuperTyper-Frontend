@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import useUpdateUserResponse from '../../../../../CustomHooks/useUserUpdate'
 import { useUpdateUser } from '../../../../../../Store/ProjectSlice'
 import { toast } from 'react-toastify'
+import MyButton from '../../../../../MyButton/MyButton'
 
 export default function AddSocialLinks({tempUser}) {
     const dispatch = useDispatch()
-    const user = useSelector(state=>state.user)
+    const user = useSelector(state => state.user)
+    const [loading,setLoading]=useState(false)
     const [formdata, setFormData] = useState({
         key: "",
         link:""
@@ -31,14 +33,16 @@ export default function AddSocialLinks({tempUser}) {
    
         if (key && link) {
             if (user) {
+                setLoading(true)
                 const data = {
                     ...user,
                     social: user?.social ? [...user?.social, formdata] : [formdata]
                 }
                 const res = await useUpdateUserResponse(user?._id, data)
-                console.log(res);
+               
                 if (res.success)
                 {
+                    setLoading(false)
                     dispatch(useUpdateUser(data))
                     setAdd(false)
                 } else {
@@ -55,7 +59,7 @@ export default function AddSocialLinks({tempUser}) {
               <input name='link' onChange={Addvalue} type="text" placeholder='Link' className='w-[70%] text-sm border focus:outline-none rounded-md p-3' />
           </div>}
           <div  className=" w-full flex gap-3 justify-center pt-4">
-              <button onClick={add ? HandleSubmit : ChangeValue} className='text-sm text-white p-2 rounded-md bg-gold-shade '>{add ? "Save Link" : "+ Add Links"}</button>
+              <MyButton loading={loading }>     <button onClick={add ? HandleSubmit : ChangeValue} className='text-sm text-white p-2 rounded-md bg-gold-shade '>{add ? "Save Link" : "+ Add Links"}</button></MyButton>
 
               {add ? <button className='text-sm bg-dark-shade rounded-md p-2' onClick={ChangeValue}>Cencel</button> : ""}
           </div>

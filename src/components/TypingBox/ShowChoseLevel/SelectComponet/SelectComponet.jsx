@@ -7,7 +7,7 @@ export default function SelectComponet({ icon, options,name,onChange }) {
     })
   return (
     <div className='w-full my-3'>
-          <div className="wraper w-full flex place-items-center shadow min-w-[300px]">
+          <div className="wraper w-full flex place-items-center shadow lg:min-w-[300px]">
               <div className="icon p-4 text-color text-3xl ">
                   {icon}
               </div>
