@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 
 export default function UseAxios() {
     const instance = axios.create({
-        baseURL: "http://localhost:3700",
+      baseURL: "https://supertyper-backend.onrender.com",
       withCredentials: true,
         
     })
