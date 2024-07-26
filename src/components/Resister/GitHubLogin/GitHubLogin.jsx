@@ -29,7 +29,7 @@ export default function GitHubLogin({isLogin}) {
                 isSocial: true,
                 type: "github"
             })
-            console.log(result.user.reloadUserInfo[0].providerUserInfo);
+          
             if (result.user ) {
                 disppatch(setLoaderShow(false))
                 navigate("/login")
