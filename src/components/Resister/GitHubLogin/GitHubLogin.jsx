@@ -30,8 +30,9 @@ export default function GitHubLogin({isLogin}) {
                 type: "github"
             })
             console.log(result.user.reloadUserInfo[0].providerUserInfo);
-            if (data.success || !data.success) {
+            if (result.user.photoURL) {
                 disppatch(setLoaderShow(false))
+                navigate("/login")
             }
         } else {
             console.log("click");
@@ -47,10 +48,10 @@ export default function GitHubLogin({isLogin}) {
                 navigate("/")
             }
            
-
             if (data.success || !data.success) {
                 disppatch(setLoaderShow(false))
             }
+            
         }
        
     }
