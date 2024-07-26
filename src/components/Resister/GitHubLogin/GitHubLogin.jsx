@@ -25,7 +25,7 @@ export default function GitHubLogin({isLogin}) {
             const data = await useResister({
                 name: result.user.reloadUserInfo?.providerUserInfo[0]?.displayName,
                 email: result.user.reloadUserInfo?.providerUserInfo[0]?.email,
-                image: result.user.reloadUserInfo?.providerUserInfo[0]?.photoURL,
+                image: result.user.photoURL,
                 isSocial: true,
                 type: "github"
             })
