@@ -1,38 +1,26 @@
-import React, { useEffect } from 'react'
-import {RouterProvider} from "react-router-dom"
-import "bootstrap/dist/css/bootstrap.min.css"
-import 'bootstrap/dist/js/bootstrap.js'
-
+import React from 'react'
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
-import Home from './components/Home/Home';
-import router from './components/Routers/Router';
-import { useDispatch, useSelector } from 'react-redux';
-import { GetMassage, GetUser } from './components/Store/Slices/Slices';
-
+import aos from "aos"
+import { RouterProvider } from 'react-router-dom';
+import router from './RouterAndTemplate/Router/Router';
+import Loader from './components/Loader/Loader';
+import "aos/dist/aos.css"
 const App = () => {
-  const socket = useSelector(state => state.socket)
-  
-  const dispatch = useDispatch();
-  useEffect(() => {
-    socket.emit("getUsers", "");
-  }, [socket])
-  useEffect(() => {
-    socket.on('reject-call', (massage) => {
-      toast.error(massage, {
-        position:"top-center"
-      })
-    })
-   },[])
-   useEffect(() => {
-     dispatch(GetUser());
-     dispatch(GetMassage())
-   }, []);
+  aos.init({
+    offset: 200,
+    duration: 1000,
+    easing: 'ease-in-sine',
+    delay: 100,
+  })
   return (
     <>
+      <Loader/>
       <RouterProvider router={router}/>
-      <ToastContainer/>
+      <ToastContainer
+    position='top-center'
+      />
     </>
   );
 }
