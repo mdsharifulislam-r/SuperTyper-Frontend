@@ -30,7 +30,7 @@ export default function GitHubLogin({isLogin}) {
                 type: "github"
             })
             console.log(result.user.reloadUserInfo[0].providerUserInfo);
-            if (result.user.photoURL) {
+            if (result.user ) {
                 disppatch(setLoaderShow(false))
                 navigate("/login")
             }
