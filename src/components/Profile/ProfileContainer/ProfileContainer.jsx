@@ -16,8 +16,8 @@ export default function ProfileContainer() {
  GetData()
 
   return (
-    <div className='w-ful bg-dark-shade'>
-          <div className="container flex flex-col lg:flex-row md:flex-row justify-center  gap-3">
+    <div className='w-full bg-dark-shade'>
+          <div className="container flex flex-col lg:flex-row md:flex-row lg:justify-center md:justify-center  gap-3">
               <ProfileSocial tempUser={tempUser} />
               <ProfileInfo tempUser={tempUser} />
       </div>

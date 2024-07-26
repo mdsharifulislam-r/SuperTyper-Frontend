@@ -4,7 +4,7 @@ import UserSocialLinks from './UserSocialLinks/UserSocialLinks'
 
 export default function ProfileSocial({tempUser}) {
   return (
-    <div className='lg:w-[40%] md:w-[40%] p-4 '>
+    <div className='lg:w-[40%] md:w-[40%] lg:p-4 md:p-3 '>
       <UserSocialInfo tempUser={tempUser} />
       <UserSocialLinks tempUser={tempUser}/>
     </div>
