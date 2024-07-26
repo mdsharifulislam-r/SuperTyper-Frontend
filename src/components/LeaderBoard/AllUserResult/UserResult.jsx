@@ -11,12 +11,12 @@ export default function UserResult({ data, index }) {
     }
   return (
       <div onClick={OnClick} data-aos="fade-up" className='w-full flex lg:justify-between px-3 py-2 place-items-center card-bg rounded-md' >
-          <div className='flex  place-items-center pr-2 lg:w-[20%]  w-[36%] gap-3'>
+          <div className='flex  place-items-center pr-2 lg:w-[20%]  w-[32%] gap-3'>
               <div className="index lg:text-5xl md:text-3xl text-2xl text-white">
                   {index+1 ||0}
               </div>
               <div className='flex gap-1'>
-                  <div className="image relative min-w-[70px]">
+                  <div className="image relative min-w-[60px]">
                       <img src={data?.userImage?data?.userImage:image} alt="" className='w-[70px] h-[70px] object-cover rounded-full bg-gold-shade' />
                   </div>
                 
