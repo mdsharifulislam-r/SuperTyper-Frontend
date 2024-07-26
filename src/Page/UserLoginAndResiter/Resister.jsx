@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 ;
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import InputElement from '../../components/InputElement/InputElement';
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 
@@ -13,6 +13,7 @@ import useResister from '../../components/CustomHooks/useResister';
 import { setLoaderShow } from '../../Store/ProjectSlice';
 
 export default function Resister() {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const [formData, setFormData] = useState({
         name: "",
@@ -36,20 +37,25 @@ export default function Resister() {
         const { name, email, pass1, pass2 } = formData
         if (name && email && pass1 && pass2) {
             if (pass1 == pass2) {
-                dispatch(setLoaderShow(true))
-                const res =await useResister({
-                    ...formData,
-                    password:pass1,
-                    isSocial:false
-                })
-                if (res.success) {
-                    dispatch(setLoaderShow(false))
-                    setFormData({
-                        name: "",
-                        email: "",
-                        pass1: "",
-                        pass2: ""
+                if (pass1.length >= 8) {
+                    dispatch(setLoaderShow(true))
+                    const res = await useResister({
+                        ...formData,
+                        password: pass1,
+                        isSocial: false
                     })
+                    if (res.success) {
+                        dispatch(setLoaderShow(false))
+                        setFormData({
+                            name: "",
+                            email: "",
+                            pass1: "",
+                            pass2: ""
+                        })
+                        navigate("/login")
+                    }
+                } else {
+                    toast.error("Password must be 8 charachter or more")
                 }
             }
             else {
